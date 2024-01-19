@@ -26,4 +26,19 @@ func ShortenURL(c *fiber.Ctx) error {
 	if err := c.BodyParser(&body); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Cannot parse JSON"})
 	}
+
+	//implement rate limiter
+
+	//check if input is actual url
+	if !govalidator.IsUrl(body.URL) {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Not a valid URL"})
+	}
+
+	//check for domain error
+	if !helpers.RemoveDomainError(body.URL) {
+		return c.Status(fiber.StatusServiceUnavailable).JSON(fiber.Map{"error": "Cannot access URL"})
+	}
+
+	//enfore https,SSL
+	body.URL = helpers.EnforeHttp(body.URL)
 }
