@@ -2,7 +2,10 @@ module github.com/lizenshakya/url-shortner-go
 
 go 1.20
 
-require github.com/gofiber/fiber/v2 v2.52.0
+require (
+	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
+	github.com/gofiber/fiber/v2 v2.52.0
+)
 
 require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
@@ -12,7 +15,7 @@ require (
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
 	github.com/go-redis/redis/v8 v8.11.5
-	github.com/google/uuid v1.5.0 // indirect
+	github.com/google/uuid v1.5.0
 	github.com/joho/godotenv v1.5.1
 	github.com/klauspost/compress v1.17.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
