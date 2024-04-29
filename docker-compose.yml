@@ -7,6 +7,12 @@ services:
       -  "3000:3000"
     depends_on:
       - db
+    environment:
+      - DB_ADDR=db:6379
+      - DB_PASS=
+      - APP_PORT=:3000
+      - DOMAIN=localhost:3000
+      - API_QUOTA=10
   db:
     build: db
     ports:
