@@ -11,6 +11,7 @@ import (
 	"github.com/lizenshakya/url-shortner-go/routes"
 )
 
+// setupRoutes initializes the application routes
 func setupRoutes(app *fiber.App) {
 	app.Get("/:url", routes.ResolveURL)
 	app.Post("/api/v1", routes.ShortenURL)
